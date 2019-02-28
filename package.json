@@ -1,13 +1,12 @@
 {
-  "name": "theme-starter",
-  "title": "Starer Theme",
-  "displayName": "Starer Theme",
+  "name": "mailspring-cnv-theme",
+  "title": "Mailspring CNV Theme",
+  "displayName": "CNV Theme",
   "theme": "ui",
-  "version": "0.1.0",
-  "description": "A great dark theme to start your own themes.",
+  "version": "0.0.1-alpha",
+  "description": "Obviously, the best theme for Mailspring out there",
   "license": "GPL-3.0",
   "engines": {
     "mailspring": "*"
   }
 }
-

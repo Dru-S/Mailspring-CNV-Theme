@@ -12,12 +12,13 @@ https://github.com/Foundry376/Mailspring/blob/master/app/static/base/ui-variable
 @gray-lighter: darken(@gray-base, 92.5%);
 @white: #0a0a0a;
 
-@accent-primary: #58b660;
-@accent-primary-dark: darken(@accent-primary, 10%);
+// @accent-primary: #ff9800;
+@accent-primary: #67ffc8;
+@accent-primary-dark: @accent-primary;
 
-@background-primary: #212121;
+@background-primary: #121212;
 @background-off-primary: #212121;
-@background-secondary: #121212;
+@background-secondary: #212121;
 @background-tertiary: #6d7987;
 
 @border-color-primary: lighten(@background-primary, 10%);
@@ -34,14 +35,14 @@ https://github.com/Foundry376/Mailspring/blob/master/app/static/base/ui-variable
 @text-color-heading: #fff;
 
 @text-color-link: @accent-primary;
-@text-color-link-hover: @accent-primary-dark;
-@text-color-link-active: @accent-primary-dark;
+@text-color-link-hover: darken(@accent-primary-dark, 10%);
+@text-color-link-active: darken(@accent-primary-dark, 15%);
 
-@btn-default-bg-color: lighten(@background-primary, 5%);
-@dropdown-default-bg-color: #404040;
+@btn-default-bg-color: @background-secondary;
+@dropdown-default-bg-color: @background-primary;
 
-@input-bg: #2e2e2e;
-@input-border: @border-color-divider;
+@input-bg: @background-secondary;
+@input-border: @background-secondary;
 
 @list-bg: #333;
 @list-border: #383838;
@@ -50,3 +51,7 @@ https://github.com/Foundry376/Mailspring/blob/master/app/static/base/ui-variable
 
 @toolbar-background-color: #121212;
 @panel-background-color: #121212;
+
+
+// CNV Variables
+@cnv-transition: all .35s ease;
