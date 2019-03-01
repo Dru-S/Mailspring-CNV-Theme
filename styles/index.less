@@ -2,10 +2,6 @@
 @import "ui-variables";
 @import "fonts";
 
-mailspring-workspace {
-  font-family: 'Product Sans', 'Nylas-Pro', 'Helvetica', sans-serif
-}
-
 .sheet-toolbar {
   border-bottom: 0;
   box-shadow: 0 0 20px 2px rgba(0, 0, 0, .5);
@@ -25,7 +21,26 @@ mailspring-workspace {
 }
 
 .account-sidebar {
+
   & &-sections {
+    position: relative;
+
+    // Add a little shadow to the '.account-switcher'
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 20px;
+      background: linear-gradient(to left, fade(#000, 20%), fade(#000, 0));
+    }
+
+    > section {
+      position: relative;
+      z-index: 1;
+    }
+
     .heading {
       color: @accent-primary;
     }
@@ -37,7 +52,7 @@ mailspring-workspace {
     min-height: 30px;
 
     > div {
-      cursor: pointer;
+      cursor: pointer !important;
       position: relative;
       z-index: 1;
     }
@@ -84,13 +99,14 @@ mailspring-workspace {
 }
 
 .list-container {
-  .list-item {
-    border-bottom-color: @background-secondary;
-    border-left: 0;
-    background: @background-primary;
 
-    &.focused {
-      color: @background-primary;
+  .list-item {
+    border-left: 0px solid fade(#000, 0%);
+    transition: @cnv-transition-list-item;
+    overflow: hidden;
+
+    &:hover:not(.selected):not(.focused) {
+      background: @list-hover-bg;
     }
   }
 }
@@ -103,23 +119,31 @@ mailspring-workspace {
     &:hover,
     &:focus,
     &:active {
-      background: fade(#fff, 10%);
+      background: fade(#fff, 7%);
     }
   }
 }
 
-.thread-icon:not(.thread-icon-unread):not(.thread-icon-star) {
-  -webkit-filter: invert(100%);
+.thread-icon {
+  &:not(.thread-icon-unread):not(.thread-icon-star) {
+    filter: invert(100%);
+  }
+
+  &.thread-icon-unread {
+    filter: blur(5px);
+  }
 }
+
 img.content-dark {
-  -webkit-filter: invert(100%);
+  filter: invert(100%) brightness(4);
 }
+
 img.content-light {
-  -webkit-filter: invert(100%);
+  filter: invert(100%);
 }
 
 .mail-label {
-  -webkit-filter: contrast(110%) brightness(85%);
+  filter: contrast(110%) brightness(85%);
 }
 
 #message-list {
@@ -137,6 +161,81 @@ img.content-light {
   }
 }
 
-.thread-list .list-item:not(.unread):not(.selected):not(.focused) {
-  color: #aaa;
+.thread-list {
+  .list-item {
+    &:not(.unread):not(.selected):not(.focused) {
+      color: darken(@text-color, 10%);
+    }
+
+    .list-column-HoverActions {
+      .inner {
+        background-image: linear-gradient(left, fade(@list-hover-bg, 0) 0%, @list-hover-bg 35%, @list-hover-bg 100%) !important;
+        background-image: -webkit-linear-gradient(left, fade(@list-hover-bg, 0) 0%, @list-hover-bg 35%, @list-hover-bg 100%) !important;
+      }
+    }
+  }
+}
+
+// Reset '.list-item' styles with variables colors when selected
+.thread-list.handler-split {
+  .list-item {
+    &.selected {
+      background: @list-selected-bg;
+      color: @list-selected-color;
+    }
+  }
+}
+
+// Blurred window
+body.is-blurred {
+  .list-container {
+    .list-item {
+      &.selected {
+        background: @cnv-blur-background;
+        border-bottom: 1px solid @cnv-blur-background;
+        color: @text-color;
+      }
+
+      &.focused {
+        background: @cnv-blur-background;
+        border-bottom: 1px solid @cnv-blur-background;
+        color: @text-color;
+      }
+
+      &.next-is-selected {
+        border-bottom: 1px solid @cnv-blur-background;
+      }
+    }
+  }
+
+  .thread-list.handler-split {
+    .list-item {
+      &.selected {
+        background: @cnv-blur-background;
+        border-bottom: 1px solid @cnv-blur-background;
+        color: @text-color;
+      }
+    }
+  }
+}
+
+
+#message-list {
+  .message-item-wrap {
+    .message-item-white-wrap {
+      background: #fff;
+    }
+  }
+
+  .header-toggle-control {
+    img {
+      background: @background-primary;
+    }
+  }
+
+  .message-participants {
+    * {
+      color: @background-primary;
+    }
+  }
 }

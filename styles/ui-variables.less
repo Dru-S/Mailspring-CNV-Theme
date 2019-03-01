@@ -3,8 +3,15 @@ Include the standard variables from Mailspring's base theme:
 https://github.com/Foundry376/Mailspring/blob/master/app/static/base/ui-variables.less#L37:L40
 */
 @import "base/ui-variables";
+@import "iframe"; // <- Must be here to be included in the <iframe>
 
-@gray-base: #ffffff;
+/*
+ * Mailspring variables
+ */
+
+@font-family-sans-serif: 'Product Sans', 'Nylas-Pro', 'Helvetica', sans-serif;
+
+@gray-base: #fff;
 @gray-darker: darken(@gray-base, 13.5%);
 @gray-dark: darken(@gray-base, 20%);
 @gray: darken(@gray-base, 33.5%);
@@ -12,14 +19,16 @@ https://github.com/Foundry376/Mailspring/blob/master/app/static/base/ui-variable
 @gray-lighter: darken(@gray-base, 92.5%);
 @white: #0a0a0a;
 
-// @accent-primary: #ff9800;
 @accent-primary: #67ffc8;
-@accent-primary-dark: @accent-primary;
+@accent-primary-dark: darken(@accent-primary, 15%);
 
-@background-primary: #121212;
-@background-off-primary: #212121;
-@background-secondary: #212121;
+@background-primary: #121212; // Mail list and single mail detail
+@background-off-primary: #212121; // 'Checking mail'
+@background-secondary: #212121; // Borders, buttons, inputs
 @background-tertiary: #6d7987;
+
+@component-active-color: @accent-primary;
+@component-active-bg: @background-secondary;
 
 @border-color-primary: lighten(@background-primary, 10%);
 @border-color-secondary: lighten(@background-secondary, 10%);
@@ -36,7 +45,7 @@ https://github.com/Foundry376/Mailspring/blob/master/app/static/base/ui-variable
 
 @text-color-link: @accent-primary;
 @text-color-link-hover: darken(@accent-primary-dark, 10%);
-@text-color-link-active: darken(@accent-primary-dark, 15%);
+@text-color-link-active: darken(@accent-primary-dark, 20%);
 
 @btn-default-bg-color: @background-secondary;
 @dropdown-default-bg-color: @background-primary;
@@ -44,14 +53,41 @@ https://github.com/Foundry376/Mailspring/blob/master/app/static/base/ui-variable
 @input-bg: @background-secondary;
 @input-border: @background-secondary;
 
-@list-bg: #333;
-@list-border: #383838;
-@list-selected-color: @text-color-inverse;
-@list-focused-color: @text-color;
+//== Toolbar
+@toolbar-background-color: darken(@white, 17.5%);
 
-@toolbar-background-color: #121212;
-@panel-background-color: #121212;
+//== Account Sidebar
+@panel-background-color: @background-primary;
+@source-list-bg: @panel-background-color;
+@source-list-active-bg: @panel-background-color;
+@source-list-active-color: @component-active-color;
+
+//== Thread List (e.g, `.list-group-item`, `.list-item`)
+@list-bg: @background-primary;
+@list-border: @background-secondary;
+@list-hover-bg: lighten(@list-bg, 10%);
+@list-focused-color: @list-bg;
+@list-focused-bg: @component-active-color;
+@list-focused-border: @list-focused-bg;
+@list-selected-color: #fff;
+@list-selected-bg: mix(@component-active-color, @list-bg, 45%);
+@list-selected-border: mix(@component-active-color, @list-bg, 30%);
 
 
-// CNV Variables
+/*
+ * CNV Variables
+ */
+@cnv-blur-background: #4a4a4a;
+
 @cnv-transition: all .35s ease;
+@cnv-transition-list-item:
+	border .15s ease,
+	color .15s ease,
+	background .15s ease;
+
+@cnv-transition-action-in:
+	opacity .15s ease,
+	transform 0s ease;
+@cnv-transition-action-out:
+	opacity .15s ease,
+	transform 0s ease .15s;
