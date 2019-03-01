@@ -1,17 +1,20 @@
-<img src="/images/mailspring-cnv.png" style="display: block; max-width: 150px; margin: 0 auto;" />
-<h1 align="center" style="margin-top: 0">
+<div align="center">
+	<img src="/images/mailspring-cnv.png" width="150px" />
+</div>
+<h1 align="center">
 	Mailspring CNV Theme
 </h1>
 <p align="center">
-	A custom theme for the [Mailspring](http://www.getmailspring.com/) email client, based on [@CNVCrew](https://github.com/CNVCrew) UI taste.
+	A custom theme for the <a href="http://www.getmailspring.com/">Mailspring</a> email client, based on <a href="https://github.com/CNVCrew">@CNVCrew</a> UI taste.
 </p>
 
 <img src="images/macos-screenshot.png" />
 
-### Installation
-
+<h3>Installation</h3>
 Open Mailspring and install the theme by going to `Mailspring > Install New Theme...` and selecting the directory.
 
 <hr>
 
-<img src="/images/made-with.png" style="display: block; max-width: 200px; margin: 0 auto;" />
+<div align="center">
+	<img src="/images/made-with.png" width="200px" />
+</div>
